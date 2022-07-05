@@ -56,7 +56,7 @@ spec:
           name: elastic-apm-agent 
         command: ['cp', '-v', '/usr/agent/elastic-apm-agent.jar', '/elastic/apm/agent']     
       containers:
-      - image: brainupgrade/sba-apiserver:observability
+      - image: aimanwhb/sba-apiserver:latest
         name: sba-apiserver
         imagePullPolicy: Always
         volumeMounts: 
@@ -66,7 +66,7 @@ spec:
           - name: spring.datasource.url
             value: jdbc:postgresql://postgres:5432/app
           - name: spring.application.name
-            value: apiserver-rajesh
+            value: apiserver-aiman
           - name: server.port
             value: "8080"
           - name: ELASTIC_APM_SERVER_URL 
@@ -80,7 +80,7 @@ spec:
                 name: app-config
                 key: ELASTIC_APM_APPLICATION_PACKAGES
           - name: ELASTIC_APM_SERVICE_NAME 
-            value: "apiserver-rajesh" 
+            value: "apiserver-aiman" 
           - name: ELASTIC_APM_ENVIRONMENT 
             value: prod
           - name: ELASTIC_APM_LOG_LEVEL 
@@ -94,4 +94,4 @@ spec:
           - name: management.metrics.web.server.request.autotime.enabled
             value: "true"
           - name: management.metrics.tags.application
-            value: apiserver-rajesh
+            value: apiserver-aiman
