@@ -44,6 +44,14 @@ spec:
                 values:
                 - frontend
           topologyKey: kubernetes.io/hostname
+          
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: topology.kubernetes.io/zone
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            app: one-pod-per-zone
 
       volumes: 
       - name: elastic-apm-agent 
